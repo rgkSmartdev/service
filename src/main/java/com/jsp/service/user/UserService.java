@@ -32,7 +32,7 @@ public class UserService {
         User user = new User(
             request.getUsername(),
             request.getEmail(),
-            request.getPassword(), // In real app, hash the password
+            request.getPassword(),
             request.getFirstName(),
             request.getLastName()
         );
