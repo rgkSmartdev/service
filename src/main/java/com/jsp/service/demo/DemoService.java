@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.Collections;
 
 @Service
 class DemoService {
@@ -28,6 +29,7 @@ class DemoService {
         al.add("Toyota");
         logger.info("ArrayList size: {}", al.size());
         logger.info("ArrayList: {}", al);
+        Collections.sort(al);
         return al;
     }
 }
