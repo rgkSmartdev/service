@@ -1,11 +1,11 @@
 package com.jsp.service.demo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
 @RestController
+@RequestMapping("/api/demo")
 class DemoController {
     private DemoService demoService;
 
@@ -18,6 +18,14 @@ class DemoController {
     @GetMapping("/demo")
     public ArrayList<String> alOps() {
         return demoService.alOps();
+    }
+
+    @PostMapping("/anagram")
+    public boolean testAnagram(@RequestParam String str1, @RequestParam  String str2) {
+        if(str1 == null || str2 == null) {
+            return false;
+        }
+        return demoService.anagram(str1, str2);
     }
 
 }

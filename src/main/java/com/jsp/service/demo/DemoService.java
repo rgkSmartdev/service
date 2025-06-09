@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 @Service
@@ -31,5 +32,18 @@ class DemoService {
         logger.info("ArrayList: {}", al);
         Collections.sort(al);
         return al;
+    }
+    public boolean anagram(String str1, String str2) {
+        if(str1.length() != str2.length()) {
+            return false;
+        }
+        char[] str1Arr = str1.toLowerCase().toCharArray();
+        char[] str2Arr = str2.toLowerCase().toCharArray();
+
+        Arrays.sort(str1Arr);
+        Arrays.sort(str2Arr);
+
+        return Arrays.equals(str1Arr, str2Arr);
+
     }
 }
