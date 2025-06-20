@@ -28,4 +28,9 @@ class DemoController {
         return demoService.anagram(str1, str2);
     }
 
+    @PostMapping("/strings")
+    public String testStrings() {
+        return "Hello World!";
+    }
+
 }
