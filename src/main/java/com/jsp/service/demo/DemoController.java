@@ -29,8 +29,10 @@ class DemoController {
     }
 
     @PostMapping("/strings")
-    public String testStrings() {
-        return "Hello World!";
+    public int testStrings() {
+        String str1 = "Hello";
+        System.out.println(str1.hashCode());
+        return str1.hashCode();
     }
 
 }
