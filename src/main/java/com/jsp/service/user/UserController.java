@@ -1,5 +1,6 @@
 package com.jsp.service.user;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,12 +22,13 @@ public class UserController {
     }
     
     @PostMapping
-    public ResponseEntity<UserResponse> createUser(@Valid @RequestBody UserCreateRequest request) {
+    public ResponseEntity<?> createUser(@Valid @RequestBody UserCreateRequest request, HttpServletRequest httpRequest) {
         try {
             UserResponse user = userService.createUser(request);
             return new ResponseEntity<>(user, HttpStatus.CREATED);
         } catch (RuntimeException e) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            ErrorResponse errorResponse = new ErrorResponse(e.getMessage(), "Bad Request", HttpStatus.BAD_REQUEST.value(), httpRequest.getRequestURI());
+            return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
         }
     }
     
